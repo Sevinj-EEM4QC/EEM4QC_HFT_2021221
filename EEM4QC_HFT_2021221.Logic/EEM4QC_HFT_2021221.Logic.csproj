@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EEM4QC_HFT_2021221.Models\EEM4QC_HFT_2021221.Models.csproj" />
     <ProjectReference Include="..\EEM4QC_HFT_2021221.Repository\EEM4QC_HFT_2021221.Repository.csproj" />
   </ItemGroup>
 
