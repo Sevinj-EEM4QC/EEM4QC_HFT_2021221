@@ -16,7 +16,7 @@ namespace EEM4QC_HFT_2021221.Controllers
     /// <response code="400">Can be returned by other errors with error reason.</response>    
     /// <response code="401">If proper authentication not provkoded.</response> 
     /// <response code="403">If user doesn't have access to method.</response> 
-    [Route("api/EEM4QC_HFT_2021221/[controller]/[action]")]
+    [Route("api/EEM4QC_HFT_2021221.Endpoint/[controller]/[action]")]
     [ApiController]
     public class EmployeeCredentialsController : ControllerBase
     {

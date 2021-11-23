@@ -25,13 +25,12 @@ namespace EEM4QC_HFT_2021221.Endpoint
         /// <param name="args"></param>
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.ConfigureKestrel(serverOptions =>
-            {
-            })
-            .UseStartup<Startup>();
-        });
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseKestrel()
+                            .UseContentRoot(Directory.GetCurrentDirectory())
+                            .UseStartup<Startup>();
+                });
     }
 }

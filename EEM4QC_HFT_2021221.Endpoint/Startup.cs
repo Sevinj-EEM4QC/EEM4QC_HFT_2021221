@@ -81,12 +81,12 @@ namespace EEM4QC_HFT_2021221.Endpoint
 
 
             app.UseSwagger(c => {
-                c.RouteTemplate = "api/EMM4QC_HFT_2021221/swagger/{documentname}/swagger.json";
+                c.RouteTemplate = "api/EEM4QC_HFT_2021221.Endpoint/swagger/{documentname}/swagger.json";
             });
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/api/EEM4QC_HFT_2021221.Endpoint/swagger/v1/swagger.json", "EEM4QC_HFT_2021221.Endpoint V1.0.0");
+                c.SwaggerEndpoint("/api/EEM4QC_HFT_2021221.Endpoint/swagger/v1/swagger.json", "EEM4QC_HFT_2021221 V1.2.3");
                 c.RoutePrefix = "api/EEM4QC_HFT_2021221.Endpoint/swagger";
             });
 
