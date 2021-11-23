@@ -3,7 +3,7 @@ using EEM4QC_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace HR_Core.Controllers
+namespace EEM4QC_HFT_2021221.Controllers
 {
     /// <summary>
     /// Author: Sevinj Abdullayeva
@@ -16,7 +16,7 @@ namespace HR_Core.Controllers
     /// <response code="400">Can be returned by other errors with error reason.</response>    
     /// <response code="401">If proper authentication not provkoded.</response> 
     /// <response code="403">If user doesn't have access to method.</response> 
-    [Route("api/hr_core/[controller]/[action]")]
+    [Route("api/EEM4QC_HFT_2021221/[controller]/[action]")]
     [ApiController]
     public class EmployeeCredentialsController : ControllerBase
     {
