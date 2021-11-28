@@ -6,6 +6,7 @@ namespace EEM4QC_HFT_2021221.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using EEM4QC_HFT_2021221.Data;
     using EEM4QC_HFT_2021221.Logic;
@@ -187,22 +188,32 @@ namespace EEM4QC_HFT_2021221.Test
         [Test]
         public void UpdateEmployee()
         {
-            using DataContext context = new DataContext();
-            IBaseLogic logic = new BaseLogic(new BaseRepository(context));
-            Mock<IBaseLogic> mockRepo = new Mock<IBaseLogic>();
-            HrEmployee employee = new HrEmployee
+            Mock<IBaseRepository> mockedBasedRepo = new Mock<IBaseRepository>(MockBehavior.Loose);
+            List<HrEmployee> testemployees = new List<HrEmployee>()
             {
+                new HrEmployee()
+                {
+                    Emp_Id=1,
+                    Emp_Name="Sevinj",
+                    Emp_Surname="Abdullayeva",
+                    Emp_Code="11",
+                    Emp_Is_Existed=true,
+                },
+            };
+            mockedBasedRepo.Setup(repo => repo.EmployeeRepo.GetList()).Returns(testemployees);
+            mockedBasedRepo.Setup(x => x.EmployeeRepo.GetSingle(It.IsAny<int>())).Returns((int i) => testemployees.Where(x => x.Emp_Id == i).Single());
+            BaseLogic baseLogic = new BaseLogic(mockedBasedRepo.Object);
+            HrEmployee employee = new HrEmployee()
+            {
+                Emp_Id = 1,
                 Emp_Name = "Sevinj",
                 Emp_Surname = "Abdullayeva",
-                Emp_Code = "11",
+                Emp_Code = "111",
                 Emp_Is_Existed = true,
             };
-
-            mockRepo.Setup(x => x.EmployeeLogic.Edit(1, employee));
-
-            var result = logic.EmployeeLogic.Edit(1, employee).Result;
-
-            Assert.IsTrue(result);
+            baseLogic.EmployeeLogic.Edit(1, employee);
+            mockedBasedRepo.Verify(repo => repo.EmployeeRepo.Edit(1, employee));
         }
+
     }
 }

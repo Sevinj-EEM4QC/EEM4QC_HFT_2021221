@@ -29,8 +29,9 @@ namespace EEM4QC_HFT_2021221.Client
 
         static async Task<Uri> CreateHrEmployeeAsync(HrEmployee employee)
         {
+            System.Threading.Thread.Sleep(10000);
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "api/Employee1", employee);
+                "Employee/Create", employee);
             response.EnsureSuccessStatusCode();
 
             // return URI of the created resource.
@@ -51,7 +52,7 @@ namespace EEM4QC_HFT_2021221.Client
         static async Task<HrEmployee> UpdateHrEmployeeAsync(HrEmployee employee)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
-                $"api/Employee/1/{employee.Emp_Id}", employee);
+                $"Employee/Update/{employee.Emp_Id}", employee);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated employee from the response body.
@@ -62,7 +63,7 @@ namespace EEM4QC_HFT_2021221.Client
         static async Task<HttpStatusCode> DeleteHrEmployeeAsync(int employee_id)
         {
             HttpResponseMessage response = await client.DeleteAsync(
-                $"api/Employee/1/{employee_id}");
+                $"Employee/Delete/{employee_id}");
             return response.StatusCode;
         }
 
@@ -74,7 +75,7 @@ namespace EEM4QC_HFT_2021221.Client
         static async Task RunAsync()
         {
             // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:25793/EMM4QC_HFT_2021221");
+            client.BaseAddress = new Uri("http://localhost:25793/api/EEM4QC_HFT_2021221.Endpoint/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
