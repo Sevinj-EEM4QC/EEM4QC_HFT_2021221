@@ -116,7 +116,6 @@ namespace EEM4QC_HFT_2021221.Test
                 new HrEmployeeStatus { Emps_Id = 8, Emps_Title = "Director", Emps_Description = " years experience" },
                 new HrEmployeeStatus { Emps_Id = 9, Emps_Title = "Teacher", Emps_Description = "9 years experience" },
                 new HrEmployeeStatus { Emps_Id = 10, Emps_Title = "Driver", Emps_Description = "10 years experience" },
-
             };
             var employeeStatus = new HrEmployeeStatus { Emps_Id = 2, Emps_Title = "Database administrator", Emps_Description = "B" };
 

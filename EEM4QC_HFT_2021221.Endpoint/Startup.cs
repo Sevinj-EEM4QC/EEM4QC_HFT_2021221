@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 
 namespace EEM4QC_HFT_2021221.Endpoint
 {
@@ -40,7 +41,8 @@ namespace EEM4QC_HFT_2021221.Endpoint
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>();
+            services.AddDbContext<DataContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
             services.AddScoped<IEmployeeLogic, EmployeeLogic>();
             services.AddScoped<IBaseRepository, BaseRepository>();
 
@@ -81,13 +83,13 @@ namespace EEM4QC_HFT_2021221.Endpoint
 
 
             app.UseSwagger(c => {
-                c.RouteTemplate = "api/EEM4QC_HFT_2021221.Endpoint/swagger/{documentname}/swagger.json";
+                c.RouteTemplate = "/swagger/{documentname}/swagger.json";
             });
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/api/EEM4QC_HFT_2021221.Endpoint/swagger/v1/swagger.json", "EEM4QC_HFT_2021221 V1.2.3");
-                c.RoutePrefix = "api/EEM4QC_HFT_2021221.Endpoint/swagger";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EEM4QC_HFT_2021221 V1.0.0");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseEndpoints(endpoints =>

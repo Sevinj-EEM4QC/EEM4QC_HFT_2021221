@@ -14,10 +14,13 @@ namespace EEM4QC_HFT_2021221.Models
         /// </summary>
         [Key]
         public int Emp_Id { get; set; }
+        [Required]
+        [MinLength(2, ErrorMessage ="First name must contains at least 2 characters")]
         /// <summary>
         /// Employee name
         /// </summary>
         public string Emp_Name { get; set; }
+        [Required]
         /// <summary>
         /// Employee Surname
         /// </summary>
