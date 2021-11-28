@@ -214,6 +214,5 @@ namespace EEM4QC_HFT_2021221.Test
             baseLogic.EmployeeLogic.Edit(1, employee);
             mockedBasedRepo.Verify(repo => repo.EmployeeRepo.Edit(1, employee));
         }
-
     }
 }

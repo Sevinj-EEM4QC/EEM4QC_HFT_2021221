@@ -48,7 +48,7 @@ namespace EEM4QC_HFT_2021221.Endpoint
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EMM4QC_HFT_2021221", Version = "v1.0.0" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EEM4QC_HFT_2021221", Version = "v1.0.0" });
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
