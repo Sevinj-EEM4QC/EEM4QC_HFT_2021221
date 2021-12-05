@@ -67,7 +67,7 @@ namespace EEM4QC_HFT_2021221.Endpoint
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-
+//this method gets called by runtime
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

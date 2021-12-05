@@ -117,10 +117,10 @@ namespace EEM4QC_HFT_2021221.Controllers
 
                 var result= _repo.EmployeeRepo.Create(_ed);
 
-                return Created("", new 
+                return Created("", new
                 {
                     _id = result
-                }); 
+                });
             }
             catch (Exception ex)
             {

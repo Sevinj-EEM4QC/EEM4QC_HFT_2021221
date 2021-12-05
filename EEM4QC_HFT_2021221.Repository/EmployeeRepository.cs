@@ -155,8 +155,6 @@ namespace EEM4QC_HFT_2021221.Repository
                     var model = this.GetSingle(id);
                     this.ctx.Attach(model);
 
-                    model.Emp_Code = employee.Emp_Code;
-
                     model.Emp_Name = employee.Emp_Name;
                     model.Emp_Surname = employee.Emp_Surname;
                     this.ctx.SaveChanges();

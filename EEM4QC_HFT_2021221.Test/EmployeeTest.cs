@@ -34,26 +34,26 @@ namespace EEM4QC_HFT_2021221.Test
 
                 List<HrEmployee> employees = new List<HrEmployee>
                 {
-                   new HrEmployee { Emp_Name = "Sevinj", Emp_Id = 1, Emp_Is_Existed = true, Emp_Code = "11", Emp_Surname = "Abdullayeva" },
-                   new HrEmployee { Emp_Name = "James", Emp_Id = 2, Emp_Is_Existed = true, Emp_Code = "22", Emp_Surname = "Bond" },
-                   new HrEmployee { Emp_Name = "Ilkin", Emp_Id = 3, Emp_Is_Existed = true, Emp_Code = "33", Emp_Surname = "Mammad" },
-                   new HrEmployee { Emp_Name = "Zeynab", Emp_Id = 4, Emp_Is_Existed = true, Emp_Code = "44", Emp_Surname = "Rahim" },
-                   new HrEmployee { Emp_Name = "Oktay", Emp_Id = 5, Emp_Is_Existed = true, Emp_Code = "55", Emp_Surname = "Mammadov" },
-                   new HrEmployee { Emp_Name = "Buse", Emp_Id = 6, Emp_Is_Existed = true, Emp_Code = "66", Emp_Surname = "Su" },
-                   new HrEmployee { Emp_Name = "Altay", Emp_Id = 7, Emp_Is_Existed = true, Emp_Code = "77", Emp_Surname = "Aliyev" },
-                   new HrEmployee { Emp_Name = "Olive", Emp_Id = 8, Emp_Is_Existed = true, Emp_Code = "88", Emp_Surname = "Mah" },
-                   new HrEmployee { Emp_Name = "Tommy", Emp_Id = 9, Emp_Is_Existed = true, Emp_Code = "99", Emp_Surname = "Tomson" },
-                   new HrEmployee { Emp_Name = "Saleh", Emp_Id = 10, Emp_Is_Existed = true, Emp_Code = "1010", Emp_Surname = "Terim" },
+                   new HrEmployee { Emp_Name = "Sevinj", Emp_Id = 1, Emp_Is_Existed = true, Emp_Surname = "Abdullayeva" },
+                   new HrEmployee { Emp_Name = "James", Emp_Id = 2, Emp_Is_Existed = true, Emp_Surname = "Bond" },
+                   new HrEmployee { Emp_Name = "Ilkin", Emp_Id = 3, Emp_Is_Existed = true, Emp_Surname = "Mammad" },
+                   new HrEmployee { Emp_Name = "Zeynab", Emp_Id = 4, Emp_Is_Existed = true, Emp_Surname = "Rahim" },
+                   new HrEmployee { Emp_Name = "Oktay", Emp_Id = 5, Emp_Is_Existed = true, Emp_Surname = "Mammadov" },
+                   new HrEmployee { Emp_Name = "Buse", Emp_Id = 6, Emp_Is_Existed = true, Emp_Surname = "Su" },
+                   new HrEmployee { Emp_Name = "Altay", Emp_Id = 7, Emp_Is_Existed = true, Emp_Surname = "Aliyev" },
+                   new HrEmployee { Emp_Name = "Olive", Emp_Id = 8, Emp_Is_Existed = true, Emp_Surname = "Mah" },
+                   new HrEmployee { Emp_Name = "Tommy", Emp_Id = 9, Emp_Is_Existed = true, Emp_Surname = "Tomson" },
+                   new HrEmployee { Emp_Name = "Saleh", Emp_Id = 10, Emp_Is_Existed = true, Emp_Surname = "Terim" },
                 };
 
                 var all = logic.EmployeeLogic.GetList();
 
-                Assert.NotNull(all);
+                Assert.That(all, Is.Not.Null);
             });
 
         /// <summary>
         /// Exited employee list .
-        /// </summary>
+        /// </summary>zz
         [Test]
         public void UnExitedEmployeeList()
         {
@@ -73,13 +73,13 @@ namespace EEM4QC_HFT_2021221.Test
                 new HrEmployeeExitDetail { Eed_Date = new DateTime(2022, 12, 9), Eed_Employee_Work_Details_Id = 9, Eed_Details = "passport number C2309871", Eed_Interviewer = 9, Eed_Questions = "non", Eed_Id = 9 },
                 new HrEmployeeExitDetail { Eed_Date = new DateTime(2022, 12, 10), Eed_Employee_Work_Details_Id = 10, Eed_Details = "passport number C2345991", Eed_Interviewer = 10, Eed_Questions = "non", Eed_Id = 10 },
             };
-            var employeeExitDetail = new HrEmployeeExitDetail { Eed_Date = new DateTime(2022, 12, 5), Eed_Employee_Work_Details_Id = 5, Eed_Details = "passport number C2345671", Eed_Interviewer = 5, Eed_Questions = "non", Eed_Id = 5 };
+            var employeeExitDetail = new HrEmployeeExitDetail { Eed_Date = new DateTime(2021, 11, 4), Eed_Employee_Work_Details_Id = 23, Eed_Details = "no", Eed_Interviewer = 23, Eed_Questions = "no", Eed_Id = 23 };
 
             mockRepo.Setup(x => x.GetSingle(1)).Returns(employeeExitDetail);
 
             var allUnexiteds = logic.EmployeeLogic.GetUnExitedEmployees();
 
-            Assert.NotNull(allUnexiteds);
+            Assert.That(allUnexiteds, Is.Not.Null);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace EEM4QC_HFT_2021221.Test
 
             var exiteds = logic.EmployeeLogic.GetUnExitedEmployees();
 
-            Assert.NotNull(exiteds);
+            Assert.That(exiteds, Is.Not.Null);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace EEM4QC_HFT_2021221.Test
 
             var allAccepted = logic.EmployeeLogic.GetUnExitedEmployees();
 
-            Assert.NotNull(allAccepted);
+            Assert.That(allAccepted, Is.Not.Null);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace EEM4QC_HFT_2021221.Test
 
             var exiteds = logic.EmployeeLogic.GetExitedEmployees();
 
-            Assert.NotNull(exiteds);
+            Assert.That(exiteds, Is.Not.Null);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace EEM4QC_HFT_2021221.Test
 
             var allCredentials = logic.EmployeCredentialsLogic.GetSingle(1);
 
-            Assert.NotNull(allCredentials);
+            Assert.That(allCredentials, Is.Not.Null);
         }
 
         /// <summary>
@@ -173,13 +173,12 @@ namespace EEM4QC_HFT_2021221.Test
             {
                 Emp_Name = "Sevinj",
                 Emp_Surname = "Abdullayeva",
-                Emp_Code = "11",
                 Emp_Is_Existed = false,
             };
 
             mockRepo.Setup(x => x.EmployeeLogic.Create(employee));
             var result = logic.EmployeeLogic.Create(employee);
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
         }
 
         /// <summary>
@@ -196,7 +195,6 @@ namespace EEM4QC_HFT_2021221.Test
                     Emp_Id=1,
                     Emp_Name="Sevinj",
                     Emp_Surname="Abdullayeva",
-                    Emp_Code="11",
                     Emp_Is_Existed=true,
                 },
             };
@@ -207,8 +205,7 @@ namespace EEM4QC_HFT_2021221.Test
             {
                 Emp_Id = 1,
                 Emp_Name = "Sevinj",
-                Emp_Surname = "Abdullayeva",
-                Emp_Code = "111",
+                Emp_Surname = "Abdul",
                 Emp_Is_Existed = true,
             };
             baseLogic.EmployeeLogic.Edit(1, employee);

@@ -10,6 +10,7 @@ namespace EEM4QC_HFT_2021221.Data
 {
     public class DataContext : DbContext
     {
+        //Initial Catalog = DataContext;
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
@@ -18,7 +19,7 @@ namespace EEM4QC_HFT_2021221.Data
 
         public DataContext()
         {
-
+            Database.EnsureCreated();
         }
 
         public virtual DbSet<HrEmployee> Hr_Employees { get; set; }
@@ -36,6 +37,15 @@ namespace EEM4QC_HFT_2021221.Data
         public virtual DbSet<ExitedEmployeeModel> Exited_Employee_Model { get; set; }
 
         public virtual DbSet<HrEmployeeWorkDetails> Hr_Employee_Work_Details { get; set; }
+
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db.mdf;Trusted_Connection = True;");
+            }
+            base.OnConfiguring(optionsBuilder);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<HrEmployee>().HasData(
@@ -46,7 +56,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Sevinj",
                     Emp_Id = 1, // Must be != 0
                     Emp_Surname = "Abdullayeva",
-                    Emp_Code = "11",
                     Emp_Is_Existed = true
                 },
                 new HrEmployee
@@ -55,7 +64,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "James",
                     Emp_Id = 2,
                     Emp_Surname = "Bond",
-                    Emp_Code = "22",
                     Emp_Is_Existed = true
 
                 },
@@ -64,7 +72,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Ilkin",
                     Emp_Id = 3,
                     Emp_Surname = "Mammad",
-                    Emp_Code = "33",
                     Emp_Is_Existed = true
 
                 },
@@ -74,7 +81,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Zeynab",
                     Emp_Id = 4,
                     Emp_Surname = "Rahim",
-                    Emp_Code = "44",
                     Emp_Is_Existed = true
 
                 },
@@ -84,7 +90,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Oktay",
                     Emp_Id = 5,
                     Emp_Surname = "Mammadov",
-                    Emp_Code = "55",
                     Emp_Is_Existed = true
 
                 },
@@ -94,7 +99,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Buse",
                     Emp_Id = 6,
                     Emp_Surname = "Su",
-                    Emp_Code = "66",
                     Emp_Is_Existed = true
 
                 },
@@ -104,7 +108,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Altay",
                     Emp_Id = 7,
                     Emp_Surname = "Aliyev",
-                    Emp_Code = "77",
                     Emp_Is_Existed = true
 
                 },
@@ -114,7 +117,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Olive",
                     Emp_Id = 8,
                     Emp_Surname = "Mah",
-                    Emp_Code = "88",
                     Emp_Is_Existed = true
 
                 },
@@ -124,7 +126,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Tommy",
                     Emp_Id = 9,
                     Emp_Surname = "Tomson",
-                    Emp_Code = "99",
                     Emp_Is_Existed = true
 
                 },
@@ -134,7 +135,6 @@ namespace EEM4QC_HFT_2021221.Data
                     Emp_Name = "Saleh",
                     Emp_Id = 10,
                     Emp_Surname = "Terim",
-                    Emp_Code = "1010",
                     Emp_Is_Existed = true
 
                 }
@@ -763,13 +763,6 @@ namespace EEM4QC_HFT_2021221.Data
                 );
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db.mdf;Trusted_Connection=Yes;");
-            }
-            base.OnConfiguring(optionsBuilder);
-        }
+
     }
 }

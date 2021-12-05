@@ -31,7 +31,7 @@ namespace EEM4QC_HFT_2021221.Controllers
         }
 
         /// <summary>
-        /// Create new employee word detail
+        /// Create new employee work detail
         /// </summary>
         /// <param name="_da"></param>
         /// <returns></returns>

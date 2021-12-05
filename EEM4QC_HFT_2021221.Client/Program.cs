@@ -13,7 +13,6 @@ namespace EEM4QC_HFT_2021221.Client
         public int Emp_Id { get; set; }
         public string Emp_Name { get; set; }
         public string Emp_Surname { get; set; }
-        public string Emp_Code { get; set; }
         public bool Emp_Is_Existed { get; set; }
     }
 
@@ -23,17 +22,19 @@ namespace EEM4QC_HFT_2021221.Client
 
         static void ShowHrEmployee(HrEmployee employee)
         {
+            if (employee is null)
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
             Console.WriteLine($"Emp_Name: {employee.Emp_Name}\tEmp_Surname: " +
                 $"{employee.Emp_Surname}\tEmp_Is_Existed: {employee.Emp_Is_Existed}");
         }
 
         static async Task<Uri> CreateHrEmployeeAsync(HrEmployee employee)
         {
-            System.Threading.Thread.Sleep(10000);
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "Employee/Create", employee);
             response.EnsureSuccessStatusCode();
-
             // return URI of the created resource.
             return response.Headers.Location;
         }
@@ -74,6 +75,7 @@ namespace EEM4QC_HFT_2021221.Client
 
         static async Task RunAsync()
         {
+
             // Update port # in the following line.
             client.BaseAddress = new Uri("http://localhost:25793/api/EEM4QC_HFT_2021221.Endpoint/");
             client.DefaultRequestHeaders.Accept.Clear();
@@ -94,16 +96,21 @@ namespace EEM4QC_HFT_2021221.Client
                 Console.WriteLine($"Created at {url}");
 
                 // Get the employee
-                employee = await GetHrEmployeeAsync(url.PathAndQuery);
+                employee = await GetHrEmployeeAsync(url?.PathAndQuery);
+                if (employee is null)
+                {
+                    throw new ArgumentNullException(nameof(employee));
+                }
                 ShowHrEmployee(employee);
 
                 // Update the employee
                 Console.WriteLine("Updating Surname");
                 employee.Emp_Surname = "Abdul";
+
                 await UpdateHrEmployeeAsync(employee);
 
                 // Get the updated employee
-                employee = await GetHrEmployeeAsync(url.PathAndQuery);
+                employee = await GetHrEmployeeAsync(url?.PathAndQuery);
                 ShowHrEmployee(employee);
 
                 // Delete the employee

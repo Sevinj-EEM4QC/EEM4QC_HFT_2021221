@@ -68,16 +68,15 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Emp_Code")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("Emp_Is_Existed")
                         .HasColumnType("bit");
 
                     b.Property<string>("Emp_Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Emp_Surname")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Emp_Id");
@@ -88,7 +87,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 1,
-                            Emp_Code = "11",
                             Emp_Is_Existed = true,
                             Emp_Name = "Sevinj",
                             Emp_Surname = "Abdullayeva"
@@ -96,7 +94,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 2,
-                            Emp_Code = "22",
                             Emp_Is_Existed = true,
                             Emp_Name = "James",
                             Emp_Surname = "Bond"
@@ -104,7 +101,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 3,
-                            Emp_Code = "33",
                             Emp_Is_Existed = true,
                             Emp_Name = "Ilkin",
                             Emp_Surname = "Mammad"
@@ -112,7 +108,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 4,
-                            Emp_Code = "44",
                             Emp_Is_Existed = true,
                             Emp_Name = "Zeynab",
                             Emp_Surname = "Rahim"
@@ -120,7 +115,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 5,
-                            Emp_Code = "55",
                             Emp_Is_Existed = true,
                             Emp_Name = "Oktay",
                             Emp_Surname = "Mammadov"
@@ -128,7 +122,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 6,
-                            Emp_Code = "66",
                             Emp_Is_Existed = true,
                             Emp_Name = "Buse",
                             Emp_Surname = "Su"
@@ -136,7 +129,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 7,
-                            Emp_Code = "77",
                             Emp_Is_Existed = true,
                             Emp_Name = "Altay",
                             Emp_Surname = "Aliyev"
@@ -144,7 +136,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 8,
-                            Emp_Code = "88",
                             Emp_Is_Existed = true,
                             Emp_Name = "Olive",
                             Emp_Surname = "Mah"
@@ -152,7 +143,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 9,
-                            Emp_Code = "99",
                             Emp_Is_Existed = true,
                             Emp_Name = "Tommy",
                             Emp_Surname = "Tomson"
@@ -160,7 +150,6 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         new
                         {
                             Emp_Id = 10,
-                            Emp_Code = "1010",
                             Emp_Is_Existed = true,
                             Emp_Name = "Saleh",
                             Emp_Surname = "Terim"

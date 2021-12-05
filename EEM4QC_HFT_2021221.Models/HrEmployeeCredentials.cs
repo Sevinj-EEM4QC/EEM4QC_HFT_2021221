@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EEM4QC_HFT_2021221.Models
 {
+    [Table("Hr_Employee_Credentials")]
     public class HrEmployeeCredentials
     {
         /// <summary>

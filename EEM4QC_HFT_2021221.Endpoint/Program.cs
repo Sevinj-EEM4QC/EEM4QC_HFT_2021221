@@ -16,6 +16,7 @@ namespace EEM4QC_HFT_2021221.Endpoint
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            System.Threading.Thread.Sleep(10000);
             CreateHostBuilder(args).Build().Run();
 
         }
