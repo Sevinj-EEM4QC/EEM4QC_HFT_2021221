@@ -1,6 +1,8 @@
 // <copyright file="EmployeeTest.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
+// The AAA (Arrange, Act, Assert) pattern is a common way of writing unit tests for a method under test. 
+// https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2022
 
 namespace EEM4QC_HFT_2021221.Test
 {
