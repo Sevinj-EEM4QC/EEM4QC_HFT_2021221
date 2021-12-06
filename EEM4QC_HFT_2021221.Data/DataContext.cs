@@ -38,11 +38,11 @@ namespace EEM4QC_HFT_2021221.Data
 
         public virtual DbSet<HrEmployeeWorkDetails> Hr_Employee_Work_Details { get; set; }
 
-                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db.mdf;Trusted_Connection = True;");
+                optionsBuilder.UseSqlServer(@"Server = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Trusted_Connection = True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -54,7 +54,7 @@ namespace EEM4QC_HFT_2021221.Data
                 {
 
                     Emp_Name = "Sevinj",
-                    Emp_Id = 1, // Must be != 0
+                    Emp_Id = 1, 
                     Emp_Surname = "Abdullayeva",
                     Emp_Is_Existed = true
                 },

@@ -72,11 +72,9 @@ namespace EEM4QC_HFT_2021221.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Emp_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Emp_Surname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Emp_Id");
