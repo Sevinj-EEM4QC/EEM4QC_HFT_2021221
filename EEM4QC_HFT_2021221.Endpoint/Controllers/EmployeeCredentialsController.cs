@@ -8,7 +8,7 @@ namespace EEM4QC_HFT_2021221.Controllers
     /// <summary>
     /// Author: Sevinj Abdullayeva
     /// Description:
-    /// All operations have general pattern and implements try...catch... exception handling.
+    /// All operations have general pattern and implements try..catch.. exception handling.
     /// All functions connects users to repo layer and no operations are performed inskode controller.
     /// It includes following operations: Crud operation for employee credentials model
     /// </summary>
