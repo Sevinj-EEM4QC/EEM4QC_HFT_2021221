@@ -114,7 +114,7 @@ namespace EEM4QC_HFT_2021221.Client
 
                 // Get the updated employee
 
-                employee = await GetHrEmployeeAsync(url.PathAndQuery);
+                employee = await GetHrEmployeeAsync(url?.PathAndQuery);
                 ShowHrEmployee(employee);
 
                 // Delete the employee
