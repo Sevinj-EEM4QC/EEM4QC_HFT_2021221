@@ -118,6 +118,7 @@ namespace EEM4QC_HFT_2021221.Client
                 ShowHrEmployee(employee);
 
                 // Delete the employee
+
                 var statusCode = await DeleteHrEmployeeAsync(employee.Emp_Id);
                 Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
 
