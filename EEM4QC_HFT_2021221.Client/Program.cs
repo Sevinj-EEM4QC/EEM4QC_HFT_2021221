@@ -106,13 +106,14 @@ namespace EEM4QC_HFT_2021221.Client
                 ShowHrEmployee(employee);
 
                 // Update the employee
+
                 Console.WriteLine("Updating Surname");
                 employee.Emp_Surname = "Abdul";
 
                 await UpdateHrEmployeeAsync(employee);
 
                 // Get the updated employee
-                employee = await GetHrEmployeeAsync(url?.PathAndQuery);
+                employee = await GetHrEmployeeAsync(url.PathAndQuery);
                 ShowHrEmployee(employee);
 
                 // Delete the employee
