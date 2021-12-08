@@ -11,6 +11,9 @@ namespace EEM4QC_HFT_2021221.Test
     using Moq;
     using NUnit.Framework;
 
+    // naming convention [UnitOfWork_StateUnderTest_ExpectedBehavior]
+        // The AAA (Arrange, Act, Assert) pattern is a common way of writing unit tests for a method under test. 
+
     /// <summary>
     /// Employee test.
     /// </summary>
