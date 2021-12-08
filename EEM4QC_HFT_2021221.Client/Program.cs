@@ -113,6 +113,7 @@ namespace EEM4QC_HFT_2021221.Client
                 await UpdateHrEmployeeAsync(employee);
 
                 // Get the updated employee
+
                 employee = await GetHrEmployeeAsync(url.PathAndQuery);
                 ShowHrEmployee(employee);
 
