@@ -78,6 +78,7 @@ namespace EEM4QC_HFT_2021221.Client
         {
 
             // Update port # in the following line.
+
             client.BaseAddress = new Uri("http://localhost:25793/api/EEM4QC_HFT_2021221.Endpoint/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
