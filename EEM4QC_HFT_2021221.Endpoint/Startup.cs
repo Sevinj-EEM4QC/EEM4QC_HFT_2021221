@@ -12,6 +12,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace EEM4QC_HFT_2021221.Endpoint
 {
@@ -45,6 +46,7 @@ namespace EEM4QC_HFT_2021221.Endpoint
             options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
             services.AddScoped<IEmployeeLogic, EmployeeLogic>();
             services.AddScoped<IBaseRepository, BaseRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             services.AddSwaggerGen(c =>
             {
@@ -57,8 +59,9 @@ namespace EEM4QC_HFT_2021221.Endpoint
             });
 
 
-            services.AddControllers();
-
+            services.AddControllers().AddJsonOptions(options => {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
         }
 
 

@@ -1,145 +1,146 @@
 ﻿//using EEM4QC_HFT_2021221.Models;
 //using EEM4QC_HFT_2021221.Repository;
-
 //using Moq;
-//using NUnit.framework;
+//using NUnit.Framework;
 //using System;
-//using System.collections.generic;
-//using System.linq;
-//using System.text;
-//using System.threading.tasks;
 //using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-//namespace eem4qc_hft_2021221.test
+//namespace EEM4QC_HFT_2021221.Test
 //{
-//    public class noncrudtests
+//    public class NonCrudTests
 //    {
-//        private Mock<IEmployeeRepository> hrEmployee;
+//        private Mock<IEmployeeRepository> peopleRepo;
 
-//        private Mock<ISalaryRecordRepository> salaryRecord;
+//        //private Mock<IRoomRepository> roomRepo;
+//        //private Mock<IExtraRepository> extraRepo;
 
-//        // <summary>
-//        // creaing the logic with mocks.
-//        // </summary>
-//        // <returns>reception.</returns>
-//        public HrEmployee createlogicwithmocks()
+//        private List<HrEmployee> expectedResultTotal;
+
+//        //private List<RoomNr> expectedResultRoomNr;
+//        //private List<ExtraNumber> extraResultExtraNumber;
+
+//        /// <summary>
+//        /// Creaing the logic with mocks.
+//        /// </summary>
+//        /// <returns>reception.</returns>
+//        public Reception CreateLogicWithMocks()
 //        {
-//            this.hrEmployee = new Mock<IEmployeeRepository>();
-//            this.salaryRecord = new Mock<ISalaryRecordRepository>();
-//            List<HrEmployee> people = new List<HrEmployee>() {
-//              new HrEmployee { Emp_Name = "Sevinj", Emp_Id = 1, Emp_Is_Existed = true, Emp_Surname = "Abdullayeva" },
-//                   new HrEmployee { Emp_Name = "James", Emp_Id = 2, Emp_Is_Existed = true, Emp_Surname = "Bond" },
-//                   new HrEmployee { Emp_Name = "Ilkin", Emp_Id = 3, Emp_Is_Existed = true, Emp_Surname = "Mammad" },
-//                   new HrEmployee { Emp_Name = "Zeynab", Emp_Id = 4, Emp_Is_Existed = true, Emp_Surname = "Rahim" },
-//                   new HrEmployee { Emp_Name = "Oktay", Emp_Id = 5, Emp_Is_Existed = true, Emp_Surname = "Mammadov" },
-//                   new HrEmployee { Emp_Name = "Buse", Emp_Id = 6, Emp_Is_Existed = true, Emp_Surname = "Su" },
-//                   new HrEmployee { Emp_Name = "Altay", Emp_Id = 7, Emp_Is_Existed = true, Emp_Surname = "Aliyev" },
-//                   new HrEmployee { Emp_Name = "Olive", Emp_Id = 8, Emp_Is_Existed = true, Emp_Surname = "Mah" },
-//                   new HrEmployee { Emp_Name = "Tommy", Emp_Id = 9, Emp_Is_Existed = true, Emp_Surname = "Tomson" },
-//                   new HrEmployee { Emp_Name = "Saleh", Emp_Id = 10, Emp_Is_Existed = true, Emp_Surname = "Terim" },
+//            this.extraRepo = new Mock<IExtraRepository>();
+//            this.peopleRepo = new Mock<IPeopleRepository>();
+//            this.roomRepo = new Mock<IRoomRepository>();
+//            List<People> people = new List<People>()
+//            {
+//             new People() { Id = 120, PeopleName = "John", PeopleRoomid = 111, PeopleExtraid = 1234, Country = "Russia", PeopleCheckin = Convert.ToDateTime("2019-12-13"), PeopleCheckout = Convert.ToDateTime("2019-12-20") },
+//             new People() { Id = 121, PeopleName = "Dean", PeopleRoomid = 112, PeopleExtraid = 1232, Country = "England", PeopleCheckin = Convert.ToDateTime("2019-12-05"), PeopleCheckout = Convert.ToDateTime("2019-12-20") },
+//             new People() { Id = 122, PeopleName = "Jake", PeopleRoomid = 114, PeopleExtraid = 1237, Country = "Germany", PeopleCheckin = Convert.ToDateTime("2020-01-04"), PeopleCheckout = Convert.ToDateTime("2020-01-11") },
+//             new People() { Id = 131, PeopleName = "Drake", PeopleRoomid = 112, PeopleExtraid = 1231, Country = "Poland", PeopleCheckin = Convert.ToDateTime("2020-01-13"), PeopleCheckout = Convert.ToDateTime("2020-01-20") },
+//             new People() { Id = 123, PeopleName = "Alfred", PeopleRoomid = 114, PeopleExtraid = 1238, Country = "Spain", PeopleCheckin = Convert.ToDateTime("2019-12-20"), PeopleCheckout = Convert.ToDateTime("2019-12-27") },
 //            };
 
-//            List<SalaryRecordRepository> extra = new List<SalaryRecordRepository>()
-//                {
-//                  new extra() { id = 1234, extratype = "excursion", extraprice = 140, extradays = "monday", extranrpeople = 30, extraticket = "yes" },
-//                  new extra() { id = 1232, extratype = "parachute", extraprice = 90, extradays = "every day", extranrpeople = 2, extraticket = "yes" },
-//                  new extra() { id = 1237, extratype = "banana", extraprice = 50, extradays = "every day", extranrpeople = 7, extraticket = "yes" },
-//                  new extra() { id = 1231, extratype = "muzeum", extraprice = 10, extradays = "sunday", extranrpeople = 100, extraticket = "yes" },
-//                  new extra() { id = 1238, extratype = "night excursion", extraprice = 10, extradays = "wednesday", extranrpeople = 40, extraticket = "yes" },
-//                };
+//            //    List<Extra> extra = new List<Extra>()
+//            //    {
+//            //      new Extra() { Id = 1234, ExtraType = "Excursion", ExtraPrice = 140, ExtraDays = "Monday", ExtraNrpeople = 30, ExtraTicket = "yes" },
+//            //      new Extra() { Id = 1232, ExtraType = "Parachute", ExtraPrice = 90, ExtraDays = "Every Day", ExtraNrpeople = 2, ExtraTicket = "yes" },
+//            //      new Extra() { Id = 1237, ExtraType = "Banana", ExtraPrice = 50, ExtraDays = "Every Day", ExtraNrpeople = 7, ExtraTicket = "yes" },
+//            //      new Extra() { Id = 1231, ExtraType = "Muzeum", ExtraPrice = 10, ExtraDays = "Sunday", ExtraNrpeople = 100, ExtraTicket = "yes" },
+//            //      new Extra() { Id = 1238, ExtraType = "Night Excursion", ExtraPrice = 10, ExtraDays = "Wednesday", ExtraNrpeople = 40, ExtraTicket = "yes" },
+//            //    };
 
-//            list<rooms> rooms = new list<rooms>()
-//                {
-//                    new rooms() { id = 111, roomstype = "double", roomsamount = 10, roomsavailable = 8, roomsprice = 240, roomsview = "seaside" },
-//                    new rooms() { id = 112, roomstype = "triple", roomsamount = 15, roomsavailable = 11, roomsprice = 300, roomsview = "pool" },
-//                    new rooms() { id = 114, roomstype = "twin", roomsamount = 7, roomsavailable = 4, roomsprice = 475, roomsview = "aqua-park" },
-//                };
+//            //    List<Rooms> rooms = new List<Rooms>()
+//            //    {
+//            //        new Rooms() { Id = 111, RoomsType = "Double", RoomsAmount = 10, RoomsAvailable = 8, RoomsPrice = 240, RoomsView = "Seaside" },
+//            //        new Rooms() { Id = 112, RoomsType = "Triple", RoomsAmount = 15, RoomsAvailable = 11, RoomsPrice = 300, RoomsView = "Pool" },
+//            //        new Rooms() { Id = 114, RoomsType = "Twin", RoomsAmount = 7, RoomsAvailable = 4, RoomsPrice = 475, RoomsView = "Aqua-Park" },
+//            //    };
 
-//            this.expectedresulttotal = new list<totalprice>()
-//                {
-//                    new totalprice() { name = "john", extra = "excursion", room = "double", price = 380 },
-//                    new totalprice() { name = "dean", extra = "parachute", room = "triple", price = 390 },
-//                    new totalprice() { name = "jake", extra = "banana", room = "twin", price = 525 },
-//                    new totalprice() { name = "drake", extra = "muzeum", room = "triple", price = 310 },
-//                    new totalprice() { name = "alfred", extra = "night excursion", room = "twin", price = 485 },
-//                };
+//            //    this.expectedResultTotal = new List<TotalPrice>()
+//            //    {
+//            //        new TotalPrice() { Name = "John", Extra = "Excursion", Room = "Double", Price = 380 },
+//            //        new TotalPrice() { Name = "Dean", Extra = "Parachute", Room = "Triple", Price = 390 },
+//            //        new TotalPrice() { Name = "Jake", Extra = "Banana", Room = "Twin", Price = 525 },
+//            //        new TotalPrice() { Name = "Drake", Extra = "Muzeum", Room = "Triple", Price = 310 },
+//            //        new TotalPrice() { Name = "Alfred", Extra = "Night Excursion", Room = "Twin", Price = 485 },
+//            //    };
 
-//            this.expectedresultroomnr = new list<roomnr>()
-//                {
-//                    new roomnr { roomtype = "double", nr = 1 },
-//                    new roomnr { roomtype = "triple", nr = 2 },
-//                    new roomnr { roomtype = "twin", nr = 2 },
-//                };
+//            //    this.expectedResultRoomNr = new List<RoomNr>()
+//            //    {
+//            //        new RoomNr { RoomType = "Double", Nr = 1 },
+//            //        new RoomNr { RoomType = "Triple", Nr = 2 },
+//            //        new RoomNr { RoomType = "Twin", Nr = 2 },
+//            //    };
 
-//            this.extraresultextranumber = new list<extranumber>()
-//                {
-//                    new extranumber() { extra = "excursion", nr = 1 },
-//                    new extranumber() { extra = "parachute", nr = 1 },
-//                    new extranumber() { extra = "banana", nr = 1 },
-//                    new extranumber() { extra = "muzeum", nr = 1 },
-//                    new extranumber() { extra = "night excursion", nr = 1 },
-//                };
+//            //    this.extraResultExtraNumber = new List<ExtraNumber>()
+//            //    {
+//            //        new ExtraNumber() { Extra = "Excursion", Nr = 1 },
+//            //        new ExtraNumber() { Extra = "Parachute", Nr = 1 },
+//            //        new ExtraNumber() { Extra = "Banana", Nr = 1 },
+//            //        new ExtraNumber() { Extra = "Muzeum", Nr = 1 },
+//            //        new ExtraNumber() { Extra = "Night Excursion", Nr = 1 },
+//            //    };
 
-//            this.extrarepo.setup(repo => repo.getall()).returns(extra.asqueryable());
-//            this.peoplerepo.setup(repo => repo.getall()).returns(people.asqueryable());
-//            this.roomrepo.setup(repo => repo.getall()).returns(rooms.asqueryable());
+//            //    this.extraRepo.Setup(repo => repo.GetAll()).Returns(extra.AsQueryable());
+//            //    this.peopleRepo.Setup(repo => repo.GetAll()).Returns(people.AsQueryable());
+//            //    this.roomRepo.Setup(repo => repo.GetAll()).Returns(rooms.AsQueryable());
 
-//            return new reception(this.extrarepo.object, this.peoplerepo.object, this.roomrepo.object);
+//            //    return new Reception(this.extraRepo.Object, this.peopleRepo.Object, this.roomRepo.Object);
+//            //}
+
+//            /// <summary>
+//            /// Testing the non-crud operation of how many people pay for their holiday.
+//            /// </summary>
+//            [Test]
+//            public void TestTotalPrice()
+//            {
+//                var logic = this.CreateLogicWithMocks();
+
+//                var totalPrice = logic.TotalPrice();
+
+//                Assert.That(totalPrice, Is.EquivalentTo(this.expectedResultTotal));
+//                Assert.That(totalPrice.Count(), Is.EqualTo(5));
+//                Assert.That(totalPrice.Count(), Is.GreaterThan(0));
+
+//                this.extraRepo.Verify(repo => repo.GetAll(), Times.Once);
+//                this.peopleRepo.Verify(repo => repo.GetAll(), Times.Once);
+//                this.roomRepo.Verify(repo => repo.GetAll(), Times.Once);
+//            }
+
+//            ///// <summary>
+//            ///// Testing the non-crud operation of how many room of each type are used.
+//            ///// </summary>
+//            //[Test]
+//            //public void RoomNr()
+//            //{
+//            //    var logic = this.CreateLogicWithMocks();
+
+//            //    var roomNr = logic.RoomNr();
+
+//            //    Assert.That(roomNr.Count(), Is.EqualTo(3));
+//            //    Assert.That(roomNr, Is.EquivalentTo(this.expectedResultRoomNr));
+
+//            //    this.extraRepo.Verify(repo => repo.GetAll(), Times.Never);
+//            //    this.peopleRepo.Verify(repo => repo.GetAll(), Times.Once);
+//            //    this.roomRepo.Verify(repo => repo.GetAll(), Times.Once);
+//            //}
+
+//            ///// <summary>
+//            ///// Testing the non-crud operation of how many extra activity are picked by people.
+//            ///// </summary>
+//            //[Test]
+//            //public void PeopleExtra()
+//            //{
+//            //    var logic = this.CreateLogicWithMocks();
+
+//            //    var extranr = logic.ExtraNumber();
+
+//            //    Assert.That(extranr.Count(), Is.EqualTo(5));
+//            //    Assert.That(extranr, Is.EquivalentTo(this.extraResultExtraNumber));
+
+//            //    this.extraRepo.Verify(repo => repo.GetAll(), Times.Once);
+//            //    this.peopleRepo.Verify(repo => repo.GetAll(), Times.Once);
+//            //    this.roomRepo.Verify(repo => repo.GetAll(), Times.Never);
+//            //}
 //        }
-
-//            / <summary>
-//            / testing the non-crud operation of how many people pay for their holiday.
-//            / </summary>
-//            [test]
-//            public void testtotalprice()
-//        {
-//            var logic = this.createlogicwithmocks();
-
-//            var totalprice = logic.totalprice();
-
-//            assert.that(totalprice, is.equivalentto(this.expectedresulttotal));
-//            assert.that(totalprice.count(), is.equalto(5));
-//            assert.that(totalprice.count(), is.greaterthan(0));
-
-//            this.extrarepo.verify(repo => repo.getall(), times.once);
-//            this.peoplerepo.verify(repo => repo.getall(), times.once);
-//            this.roomrepo.verify(repo => repo.getall(), times.once);
-//        }
-
-//        /// <summary>
-//        /// testing the non-crud operation of how many room of each type are used.
-//        /// </summary>
-//        [test]
-//        public void roomnr()
-//        {
-//            var logic = this.createlogicwithmocks();
-
-//            var roomnr = logic.roomnr();
-
-//            assert.that(roomnr.count(), is.equalto(3));
-//            assert.that(roomnr, is.equivalentto(this.expectedresultroomnr));
-
-//            this.extrarepo.verify(repo => repo.getall(), times.never);
-//            this.peoplerepo.verify(repo => repo.getall(), times.once);
-//            this.roomrepo.verify(repo => repo.getall(), times.once);
-//        }
-
-//        /// <summary>
-//        /// testing the non-crud operation of how many extra activity are picked by people.
-//        /// </summary>
-//        [test]
-//        public void peopleextra()
-//        {
-//            var logic = this.createlogicwithmocks();
-
-//            var extranr = logic.extranumber();
-
-//            assert.that(extranr.count(), is.equalto(5));
-//            assert.that(extranr, is.equivalentto(this.extraresultextranumber));
-
-//            this.extrarepo.verify(repo => repo.getall(), times.once);
-//            this.peoplerepo.verify(repo => repo.getall(), times.once);
-//            this.roomrepo.verify(repo => repo.getall(), times.never);
-//        }
-//    }
 //}

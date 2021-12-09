@@ -23,15 +23,20 @@ namespace EEM4QC_HFT_2021221.Controllers
     {
         private readonly IBaseRepository _repo;
         private readonly IEmployeeLogic _employeeLogic;
+        private readonly Data.DataContext dataContext;
+
         /// <summary>
         /// Constructor of controller
         /// </summary>
         /// <param name="repo"></param>
         /// <param name="employeeLogic"></param>
-        public EmployeeController(IBaseRepository repo, IEmployeeLogic employeeLogic)
+        public EmployeeController(Data.DataContext dataCon)
         {
-            _employeeLogic = employeeLogic;
-            _repo = repo;
+            dataContext = dataCon;
+            _repo = new BaseRepository(dataCon);
+            _employeeLogic = new EmployeeLogic(_repo);
+           
+           
         }
 
 
@@ -115,12 +120,10 @@ namespace EEM4QC_HFT_2021221.Controllers
             try
             {
 
-                var result= _repo.EmployeeRepo.Create(_ed);
+                var result = _repo.EmployeeRepo.Create(_ed).Result.ToString();
 
-                return Created("", new
-                {
-                    _id = result
-                });
+                var emp = _repo.EmployeeRepo.GetSingle(Int32.Parse(result));
+                return Ok(emp);
             }
             catch (Exception ex)
             {
@@ -144,11 +147,18 @@ namespace EEM4QC_HFT_2021221.Controllers
         {
             try
             {
-                return Ok(_repo.EmployeeRepo.Edit(id,_ed));
+                var updateStatus = _repo.EmployeeRepo.Edit(id, _ed).Result.ToString();
+
+                if (updateStatus == "True")
+                {
+                    var emp = _repo.EmployeeRepo.GetSingle(id);
+                    return Ok(emp);
+                }
+                else return BadRequest();
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message.ToString());
             }
         }
 
@@ -163,7 +173,10 @@ namespace EEM4QC_HFT_2021221.Controllers
         {
             try
             {
-                return Ok(_repo.EmployeeRepo.Delete(id));
+                var updateStatus =  _repo.EmployeeRepo.Delete(id).Result.ToString();
+                if (updateStatus == "True")
+                    return Ok();
+                else return BadRequest();
             }
             catch (Exception ex)
             {
