@@ -35,14 +35,15 @@ namespace EEM4QC_HFT_2021221.Client
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "Employee/Create", employee);
             response.EnsureSuccessStatusCode();
+            var url = response.RequestMessage.RequestUri;
             // return URI of the created resource.
-            return response.Headers.Location;
+            return url ;
         }
 
         static async Task<HrEmployee> GetHrEmployeeAsync(string path)
         {
             HrEmployee employee = null;
-            HttpResponseMessage response = await client.GetAsync(path);
+            HttpResponseMessage response = await client.GetAsync(path+"Employee/Get/"+ 30);
             if (response.IsSuccessStatusCode)
             {
                 employee = await response.Content.ReadAsAsync<HrEmployee>();
@@ -98,7 +99,7 @@ namespace EEM4QC_HFT_2021221.Client
                 Console.WriteLine($"Created at {url}");
 
                 // Get the employee
-                employee = await GetHrEmployeeAsync(url?.PathAndQuery);
+                employee = await GetHrEmployeeAsync(client.BaseAddress?.PathAndQuery);
                 if (employee is null)
                 {
                     throw new ArgumentNullException(nameof(employee));
@@ -108,13 +109,13 @@ namespace EEM4QC_HFT_2021221.Client
                 // Update the employee
 
                 Console.WriteLine("Updating Surname");
-                employee.Emp_Surname = "Abdul";
+                employee.Emp_Surname = "Abdull";
 
                 await UpdateHrEmployeeAsync(employee);
 
                 // Get the updated employee
 
-                employee = await GetHrEmployeeAsync(url?.PathAndQuery);
+                employee = await GetHrEmployeeAsync(client.BaseAddress?.PathAndQuery);
                 ShowHrEmployee(employee);
 
                 // Delete the employee
