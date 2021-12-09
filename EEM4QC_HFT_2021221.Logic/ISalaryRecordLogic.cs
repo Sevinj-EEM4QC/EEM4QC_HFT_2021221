@@ -9,6 +9,7 @@ namespace EEM4QC_HFT_2021221.Logic
 {
     public interface ISalaryRecordLogic
     {
+        List<HrEmployeeSalaryRecord> GetList();
         /// <summary>
         /// Get single model.
         /// </summary>

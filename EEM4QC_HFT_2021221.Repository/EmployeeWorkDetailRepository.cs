@@ -128,5 +128,8 @@ namespace EEM4QC_HFT_2021221.Repository
         /// <returns>bool.</returns>
         private bool Exists(int employeeId)
             => this.ctx.Hr_Employee_Work_Details.Any(x => x.Wd_Employee_Id == employeeId);
+
+        public List<HrEmployeeWorkDetails> GetList()
+        => this.ctx.Hr_Employee_Work_Details.AsNoTracking().ToList();
     }
 }

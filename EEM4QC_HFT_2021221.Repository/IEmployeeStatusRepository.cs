@@ -9,6 +9,7 @@ namespace EEM4QC_HFT_2021221.Repository
 {
     public interface IEmployeeStatusRepository
     {
+        List<HrEmployeeStatus> GetList();
         /// <summary>
         /// Get exists model.
         /// </summary>

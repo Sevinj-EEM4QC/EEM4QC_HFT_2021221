@@ -43,6 +43,7 @@ namespace EEM4QC_HFT_2021221.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(@"Server = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Trusted_Connection = True;");
+                
             }
             base.OnConfiguring(optionsBuilder);
         }

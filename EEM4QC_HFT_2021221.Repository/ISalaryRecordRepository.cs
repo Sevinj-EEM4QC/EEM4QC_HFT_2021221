@@ -9,6 +9,7 @@ namespace EEM4QC_HFT_2021221.Repository
 {
     public interface ISalaryRecordRepository
     {
+        List<HrEmployeeSalaryRecord> GetList();
         /// <summary>
         /// Get single.
         /// </summary>

@@ -9,6 +9,7 @@ namespace EEM4QC_HFT_2021221.Logic
 {
     public interface IEmployeeWorkDetailLogic
     {
+        List<HrEmployeeWorkDetails> GetList();
         /// <summary>
         /// Get exists model.
         /// </summary>

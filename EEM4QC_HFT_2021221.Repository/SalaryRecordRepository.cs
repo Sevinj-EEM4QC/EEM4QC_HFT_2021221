@@ -1,5 +1,6 @@
 ﻿using EEM4QC_HFT_2021221.Data;
 using EEM4QC_HFT_2021221.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -122,5 +123,8 @@ namespace EEM4QC_HFT_2021221.Repository
         /// <returns>bool.</returns>
         private bool Exists(int employeeId)
             => this.ctx.Hr_Employee_Salary_Record.Any(x => x.Esr_Employee_Id == employeeId);
+
+        public List<HrEmployeeSalaryRecord> GetList()
+         => this.ctx.Hr_Employee_Salary_Record.AsNoTracking().ToList();
     }
 }

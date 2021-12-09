@@ -84,5 +84,8 @@ namespace EEM4QC_HFT_2021221.Logic
                     throw;
                 }
             }).ConfigureAwait(false);
+
+        public List<HrEmployeeSalaryRecord> GetList()
+            => this.repo.SalaryRecordRepo.GetList();
     }
 }

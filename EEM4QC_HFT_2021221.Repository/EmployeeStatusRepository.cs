@@ -116,6 +116,9 @@ namespace EEM4QC_HFT_2021221.Repository
         /// <returns>bool.</returns>
         private bool Exists(int id)
             => this.ctx.Hr_Employee_Status.Any(x => x.Emps_Id == id);
+
+        public List<HrEmployeeStatus> GetList()
+        => this.ctx.Hr_Employee_Status.AsNoTracking().ToList();
     }
 }
 
